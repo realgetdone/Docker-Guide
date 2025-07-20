@@ -1,15 +1,16 @@
-# How to install docker on LINUX
+# How to Install Docker on Linux (Ubuntu/Debian)
 
-1. Step 1: **Uninstall old versions (if any)**
+### Step 1: Uninstall Old Versions (if any)
 
 ```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
-1.  **Update the apt package index and install dependencies**
+### Step 2: Update the apt Package Index and Install Dependencies
 
 ```bash
 sudo apt-get update
+
 sudo apt-get install \
     ca-certificates \
     curl \
@@ -17,7 +18,7 @@ sudo apt-get install \
     lsb-release
 ```
 
-1.  **Add Docker’s official GPG key**
+### Step 3: Add Docker’s Official GPG Key
 
 ```bash
 sudo mkdir -p /etc/apt/keyrings
@@ -26,36 +27,36 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
     sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ```
 
-1. Step 4: **Set up the Docker repository**
+### Step 4: Set Up the Docker Repository
 
 ```bash
 echo \
-  "deb [arch=$(dpkg --print-architecture) \
-  signed-by=/etc/apt/keyrings/docker.gpg] \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
   https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-1. Update package index again
+### Step 5: Update the Package Index Again
 
 ```bash
 sudo apt-get update
 ```
 
-1. Step 6: **Install Docker Engine**
+### Step 6: Install Docker Engine and Components
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io \
+    docker-buildx-plugin docker-compose-plugin
 ```
 
-1. Verify the installation
+### Step 7: Verify Docker Installation
 
 ```bash
 sudo docker run hello-world
 ```
 
-1. Docker Version Check
+### Step 8: Check Docker Version
 
 ```bash
 docker --version
